@@ -21,9 +21,9 @@ from cloudify.exceptions import RecoverableError, NonRecoverableError
 from cloudify.mocks import MockCloudifyContext
 from cloudify.state import current_ctx
 
-import cloudify_kubernetes.decorators as decorators
-from cloudify_kubernetes.k8s import (CloudifyKubernetesClient,
-                                     KuberentesInvalidApiMethodError)
+import kubernetes_sdk.decorators as decorators
+from kubernetes_sdk.k8s import (CloudifyKubernetesClient,
+                                KuberentesInvalidApiMethodError)
 
 
 class TestDecorators(unittest.TestCase):

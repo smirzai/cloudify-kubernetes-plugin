@@ -23,12 +23,12 @@ from cloudify.exceptions import (RecoverableError,
 from cloudify.mocks import MockCloudifyContext
 from cloudify.state import current_ctx
 
-from cloudify_kubernetes.decorators import RELATIONSHIP_TYPE_MANAGED_BY_MASTER
-from cloudify_kubernetes.k8s.mapping import (
+from kubernetes_sdk.decorators import RELATIONSHIP_TYPE_MANAGED_BY_MASTER
+from kubernetes_sdk.k8s.mapping import (
     KubernetesApiMapping,
     KubernetesSingleOperationApiMapping
 )
-import cloudify_kubernetes.tasks as tasks
+import kubernetes_sdk.tasks as tasks
 
 
 class TestTasks(unittest.TestCase):

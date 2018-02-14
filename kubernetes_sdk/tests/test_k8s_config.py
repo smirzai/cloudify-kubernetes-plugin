@@ -16,13 +16,13 @@ import unittest
 import os
 from mock import MagicMock, patch
 
-from cloudify_kubernetes.k8s.config import (KubernetesApiConfigurationVariants,
-                                            ManagerFilePathConfiguration,
-                                            BlueprintFileConfiguration,
-                                            KubernetesApiConfiguration,
-                                            FileContentConfiguration,
-                                            ApiOptionsConfiguration)
-from cloudify_kubernetes.k8s.exceptions import (
+from kubernetes_sdk.k8s.config import (KubernetesApiConfigurationVariants,
+                                       ManagerFilePathConfiguration,
+                                       BlueprintFileConfiguration,
+                                       KubernetesApiConfiguration,
+                                       FileContentConfiguration,
+                                       ApiOptionsConfiguration)
+from kubernetes_sdk.k8s.exceptions import (
     KuberentesApiInitializationFailedError
 )
 

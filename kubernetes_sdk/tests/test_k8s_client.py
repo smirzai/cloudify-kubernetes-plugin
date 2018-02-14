@@ -17,12 +17,12 @@ import unittest
 from mock import MagicMock
 
 from kubernetes.client.rest import ApiException
-from cloudify_kubernetes.k8s import (CloudifyKubernetesClient,
-                                     KuberentesInvalidPayloadClassError,
-                                     KuberentesInvalidApiClassError,
-                                     KuberentesInvalidApiMethodError,
-                                     KubernetesResourceDefinition,
-                                     KuberentesApiOperationError)
+from kubernetes_sdk.k8s import (CloudifyKubernetesClient,
+                                KuberentesInvalidPayloadClassError,
+                                KuberentesInvalidApiClassError,
+                                KuberentesInvalidApiMethodError,
+                                KubernetesResourceDefinition,
+                                KuberentesApiOperationError)
 
 
 class TestClient(unittest.TestCase):

@@ -16,11 +16,11 @@ import unittest
 from mock import MagicMock
 from kubernetes.client.rest import ApiException
 
-from cloudify_kubernetes.k8s.operations import (KubernetesCreateOperation,
-                                                KubernetesReadOperation,
-                                                KubernetesUpdateOperation,
-                                                KubernetesDeleteOperation)
-from cloudify_kubernetes.k8s.exceptions import KuberentesApiOperationError
+from kubernetes_sdk.k8s.operations import (KubernetesCreateOperation,
+                                           KubernetesReadOperation,
+                                           KubernetesUpdateOperation,
+                                           KubernetesDeleteOperation)
+from kubernetes_sdk.k8s.exceptions import KuberentesApiOperationError
 
 
 class TestKubernetesCreateOperation(unittest.TestCase):

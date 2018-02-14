@@ -19,13 +19,13 @@ from mock import (MagicMock, mock_open, patch)
 from cloudify.mocks import MockCloudifyContext
 from cloudify.state import current_ctx
 
-from cloudify_kubernetes import utils
-from cloudify_kubernetes.k8s.client import KubernetesResourceDefinition
-from cloudify_kubernetes.k8s.exceptions import (
+from kubernetes_sdk import utils
+from kubernetes_sdk.k8s.client import KubernetesResourceDefinition
+from kubernetes_sdk.k8s.exceptions import (
     KuberentesInvalidDefinitionError,
     KuberentesMappingNotFoundError
 )
-from cloudify_kubernetes.k8s.mapping import (
+from kubernetes_sdk.k8s.mapping import (
     KubernetesSingleOperationApiMapping,
     KubernetesApiMapping
 )

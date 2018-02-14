@@ -15,8 +15,8 @@
 
 import unittest
 
-from cloudify_kubernetes.k8s.exceptions import KuberentesMappingNotFoundError
-from cloudify_kubernetes.k8s.mapping import (
+from kubernetes_sdk.k8s.exceptions import KuberentesMappingNotFoundError
+from kubernetes_sdk.k8s.mapping import (
     KubernetesSingleOperationApiMapping,
     KubernetesApiMapping,
     get_mapping

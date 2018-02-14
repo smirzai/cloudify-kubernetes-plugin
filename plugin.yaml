@@ -1,5 +1,4 @@
 plugins:
-
   kubernetes:
     executor: central_deployment_agent
     package_name: cloudify-kubernetes-plugin
@@ -248,75 +247,53 @@ node_types:
     interfaces:
       cloudify.interfaces.lifecycle:
         create:
-          implementation: kubernetes.cloudify_kubernetes.tasks.resource_create
-        update:
-          implementation: kubernetes.cloudify_kubernetes.tasks.resource_update
-        delete:
-          implementation: kubernetes.cloudify_kubernetes.tasks.resource_delete
-
-  cloudify.kubernetes.resources.ClusterRoleBinding:
-    derived_from: cloudify.nodes.Root
-    properties:
-      definition:
-        type: cloudify.kubernetes.types.RoleDefinition
-        description: >
-          Definition of role using native Kubernetes YAML spec
-    interfaces:
-      cloudify.interfaces.lifecycle:
-        create:
-          implementation: kubernetes.cloudify_kubernetes.tasks.resource_create
+          implementation: kubernetes.kubernetes_plugin.blueprint_defined_resource.prepare
+        configure:
+          implementation: kubernetes.kubernetes_plugin.blueprint_defined_resource.create
         start:
-          implementation: kubernetes.cloudify_kubernetes.tasks.resource_read
+          implementation: kubernetes.kubernetes_plugin.blueprint_defined_resource.start
+        update:
+          implementation: kubernetes.kubernetes_plugin.blueprint_defined_resource.update
         delete:
-          implementation: kubernetes.cloudify_kubernetes.tasks.resource_delete
+          implementation: kubernetes.kubernetes_plugin.blueprint_defined_resource.delete
+
+# TODO
+#  cloudify.kubernetes.resources.ClusterRoleBinding:
+#    derived_from: cloudify.nodes.Root
+#    properties:
+#      definition:
+#        type: cloudify.kubernetes.types.RoleDefinition
+#        description: >
+#          Definition of role using native Kubernetes YAML spec
+#    interfaces:
+#      cloudify.interfaces.lifecycle:
+#        create:
+#          implementation: kubernetes.kubernetes_plugin.tasks.resource_create
+#        start:
+#          implementation: kubernetes.kubernetes_plugin.tasks.resource_read
+#        delete:
+#          implementation: kubernetes.kubernetes_plugin.tasks.resource_delete
 
   cloudify.kubernetes.resources.Deployment:
     derived_from: cloudify.kubernetes.resources.BlueprintDefinedResource
-    interfaces:
-      cloudify.interfaces.lifecycle:
-        start:
-          implementation: kubernetes.cloudify_kubernetes.tasks.resource_read
 
   cloudify.kubernetes.resources.Pod:
     derived_from: cloudify.kubernetes.resources.BlueprintDefinedResource
-    interfaces:
-      cloudify.interfaces.lifecycle:
-        start:
-          implementation: kubernetes.cloudify_kubernetes.tasks.resource_read
 
   cloudify.kubernetes.resources.ReplicaSet:
     derived_from: cloudify.kubernetes.resources.BlueprintDefinedResource
-    interfaces:
-      cloudify.interfaces.lifecycle:
-        start:
-          implementation: kubernetes.cloudify_kubernetes.tasks.resource_read
 
   cloudify.kubernetes.resources.ReplicationController:
     derived_from: cloudify.kubernetes.resources.BlueprintDefinedResource
-    interfaces:
-      cloudify.interfaces.lifecycle:
-        start:
-          implementation: kubernetes.cloudify_kubernetes.tasks.resource_read
 
   cloudify.kubernetes.resources.Service:
     derived_from: cloudify.kubernetes.resources.BlueprintDefinedResource
-    interfaces:
-      cloudify.interfaces.lifecycle:
-        start:
-          implementation: kubernetes.cloudify_kubernetes.tasks.resource_read
 
   cloudify.kubernetes.resources.PersistentVolume:
     derived_from: cloudify.kubernetes.resources.BlueprintDefinedResource
-    interfaces:
-      cloudify.interfaces.lifecycle:
-        start:
-          implementation: kubernetes.cloudify_kubernetes.tasks.resource_read
 
   cloudify.kubernetes.resources.ConfigMap:
     derived_from: cloudify.kubernetes.resources.BlueprintDefinedResource
-    properties:
-      definition:
-        type: cloudify.kubernetes.types.ConfigClassResourceDefinition
 
   cloudify.kubernetes.resources.StorageClass:
     derived_from: cloudify.nodes.Root
@@ -336,9 +313,15 @@ node_types:
     interfaces:
       cloudify.interfaces.lifecycle:
         create:
-          implementation: kubernetes.cloudify_kubernetes.tasks.custom_resource_create
+          implementation: kubernetes.kubernetes_plugin.custom_blueprint_defined_resource.prepate
+        configure:
+          implementation: kubernetes.kubernetes_plugin.custom_blueprint_defined_resource.create
+        start:
+          implementation: kubernetes.kubernetes_plugin.custom_blueprint_defined_resource.verify
+        update:
+          implementation: kubernetes.kubernetes_plugin.custom_blueprint_defined_resource.update
         delete:
-          implementation: kubernetes.cloudify_kubernetes.tasks.custom_resource_delete
+          implementation: kubernetes.kubernetes_plugin.custom_blueprint_defined_resource.delete
 
   cloudify.kubernetes.resources.FileDefinedResource:
     derived_from: cloudify.nodes.Root
@@ -348,11 +331,16 @@ node_types:
         description: >
           A path to YAML file containing the resource definition.
     interfaces:
-      cloudify.interfaces.lifecycle:
         create:
-          implementation: kubernetes.cloudify_kubernetes.tasks.file_resource_create
+          implementation: kubernetes.kubernetes_plugin.file_defined_resource.prepate
+        configure:
+          implementation: kubernetes.kubernetes_plugin.file_defined_resource.create
+        start:
+          implementation: kubernetes.kubernetes_plugin.file_defined_resource.verify
+        update:
+          implementation: kubernetes.kubernetes_plugin.file_defined_resource.update
         delete:
-          implementation: kubernetes.cloudify_kubernetes.tasks.file_resource_delete
+          implementation: kubernetes.kubernetes_plugin.file_defined_resource.delete
 
   cloudify.kubernetes.resources.MultipleFileDefinedResources:
     derived_from: cloudify.nodes.Root
@@ -363,9 +351,15 @@ node_types:
     interfaces:
       cloudify.interfaces.lifecycle:
         create:
-          implementation: kubernetes.cloudify_kubernetes.tasks.multiple_file_resource_create
+          implementation: kubernetes.kubernetes_plugin.multiple_file_defined_resources.prepate
+        configure:
+          implementation: kubernetes.kubernetes_plugin.multiple_file_defined_resources.create
+        start:
+          implementation: kubernetes.kubernetes_plugin.multiple_file_defined_resources.verify
+        update:
+          implementation: kubernetes.kubernetes_plugin.multiple_file_defined_resources.update
         delete:
-          implementation: kubernetes.cloudify_kubernetes.tasks.multiple_file_resource_delete
+          implementation: kubernetes.kubernetes_plugin.multiple_file_defined_resources.delete
 
 relationships:
 

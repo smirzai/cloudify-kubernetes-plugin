@@ -16,12 +16,12 @@
 import unittest
 from mock import MagicMock, patch
 
-from cloudify_kubernetes.k8s.authentication import (
+from kubernetes_sdk.k8s.authentication import (
     KubernetesApiAuthentication,
     GCPServiceAccountAuthentication,
     KubernetesApiAuthenticationVariants
 )
-from cloudify_kubernetes.k8s.exceptions import KuberentesAuthenticationError
+from kubernetes_sdk.k8s.exceptions import KuberentesAuthenticationError
 
 
 class BaseTestK8SAuthentication(unittest.TestCase):

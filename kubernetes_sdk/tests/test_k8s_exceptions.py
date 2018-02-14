@@ -13,13 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import unittest
-from cloudify_kubernetes.k8s import (KuberentesApiInitializationFailedError,
-                                     KuberentesAuthenticationError,
-                                     KuberentesInvalidPayloadClassError,
-                                     KuberentesInvalidApiMethodError,
-                                     KuberentesInvalidApiClassError,
-                                     KuberentesApiOperationError,
-                                     KuberentesError)
+from kubernetes_sdk.k8s import (KuberentesApiInitializationFailedError,
+                                KuberentesAuthenticationError,
+                                KuberentesInvalidPayloadClassError,
+                                KuberentesInvalidApiMethodError,
+                                KuberentesInvalidApiClassError,
+                                KuberentesApiOperationError,
+                                KuberentesError)
 
 
 class TestException(unittest.TestCase):
